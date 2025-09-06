@@ -12,7 +12,7 @@ class loan {
     private $margin = 0.001;
     private $marginDelta = Null;
     private $pass = 0;
-    private $passMax = 400;
+    private $passMax = 100;
     private $failed = False;
     private $modificators = [];
     private $monthlyPaymentModification = 0;
@@ -179,7 +179,7 @@ td, th {
             }
         }
 
-        $html .= "<b>Données Initiales</b><br/>";
+        $html .= "<b>Données Initiales</b><br/>\n";
         if (! $this->modificators)
             $html .= "Mensualité : ".number_format($this->monthlyPayment, 2, ',', ' ')." €<br/>\n";
         $html .= "Taux de l'assurance annuel : ".number_format($this->insuranceRate, 2, ',', ' ')." %<br/>\n";
@@ -190,7 +190,7 @@ td, th {
         $html .= "<br/>";
 
         if ($this->modificators) {
-            $html .= "<b>Modifications</b><br/>";
+            $html .= "<b>Modifications</b><br/>\n";
             foreach($this->modificators as $modificator) {
                 if ($modificator['amountReplace'])
                     $html .= sprintf ("Echeance %s : %s € (remplace l'échéance) / + %s Mois<br/>\n", $modificator['k'], $modificator['amount'], $modificator['term']);
@@ -200,7 +200,7 @@ td, th {
             $html .= "<br/>\n";
         }
 
-        $html .= "<b>Récapitulatif</b><br/>";
+        $html .= "<b>Récapitulatif</b><br/>\n";
         foreach($totals as $key => $value) {
             $html .= sprintf("%s : %s €<br/>\n", $this->headers[$key], number_format($totals[$key], 2, ',', ' '));
         }
