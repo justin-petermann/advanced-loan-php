@@ -186,7 +186,7 @@ td, th {
         $html .= "Taux du crédit annuel : ".number_format($this->creditRate, 2, ',', ' ')." %<br/>\n";
         $html .= "Montant emprunté : ".number_format($this->amountBorrowed, 2, ',', ' ')." €<br/>\n";
         $html .= "Durée : ".max(array_keys($this->cache))." Mois<br/>\n";
-        $html .= "Succes : ".(($this->failed)?'Non':"Oui")."<br>\n"; 
+        $html .= "Succès : ".(($this->failed)?'Non':"Oui")."<br>\n"; 
         $html .= "<br/>";
 
         if ($this->modificators) {
@@ -215,17 +215,17 @@ td, th {
                 $html .= "  <th>".$name."</th>\n";
             $html .= "</tr>\n";
             foreach($this->cache as $k => $values) {
-                $html .= "<tr>";
-                $html .= "<td>$k</td>";
+                $html .= "<tr>\n";
+                $html .= "<td>$k</td>\n";
                 foreach($this->headers as $key => $name)
                     if (array_key_exists($key, $values))
                         $html .= "<td>".number_format($values[$key], 2, ',', ' ')." €</td>\n";
                     else
                         $html .= "<td></td>\n";
     
-                $html .= "</tr>";
+                $html .= "</tr>\n";
             }
-            $html .= "</table>";
+            $html .= "</table>\n";
             return $html;    
         }
     }
