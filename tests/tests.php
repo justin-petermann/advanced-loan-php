@@ -17,6 +17,9 @@ $loan->setModificator(6, 50000, -12*1, False);
 
 $loan->findMonthlyPayment();
 
-print $loan->getHtml();
+$html = $loan->getHtml();
+print ($html);
+
+file_put_contents('index.html', $html);
 
 unset($loan);
