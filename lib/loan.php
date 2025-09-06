@@ -12,7 +12,7 @@ class loan {
     private $margin = 0.001;
     private $marginDelta = Null;
     private $pass = 0;
-    private $passMax = 100;
+    private $passMax = 400;
     private $failed = False;
     private $modificators = [];
     private $monthlyPaymentModification = 0;
@@ -181,39 +181,39 @@ td, th {
 
         $html .= "<b>Données Initiales</b><br/>";
         if (! $this->modificators)
-            $html .= "Mensualité : ".number_format($this->monthlyPayment, 2, ',', ' ')." €<br/>";
-        $html .= "Taux de l'assurance annuel : ".number_format($this->insuranceRate, 2, ',', ' ')." %<br/>";
-        $html .= "Taux du crédit annuel : ".number_format($this->creditRate, 2, ',', ' ')." %<br/>";
-        $html .= "Montant emprunté : ".number_format($this->amountBorrowed, 2, ',', ' ')." €<br/>";
-        $html .= "Durée : ".max(array_keys($this->cache))." Mois<br/>";
-        $html .= "Succes : ".(($this->failed)?'Non':"Oui")."<br>"; 
+            $html .= "Mensualité : ".number_format($this->monthlyPayment, 2, ',', ' ')." €<br/>\n";
+        $html .= "Taux de l'assurance annuel : ".number_format($this->insuranceRate, 2, ',', ' ')." %<br/>\n";
+        $html .= "Taux du crédit annuel : ".number_format($this->creditRate, 2, ',', ' ')." %<br/>\n";
+        $html .= "Montant emprunté : ".number_format($this->amountBorrowed, 2, ',', ' ')." €<br/>\n";
+        $html .= "Durée : ".max(array_keys($this->cache))." Mois<br/>\n";
+        $html .= "Succes : ".(($this->failed)?'Non':"Oui")."<br>\n"; 
         $html .= "<br/>";
 
         if ($this->modificators) {
             $html .= "<b>Modifications</b><br/>";
             foreach($this->modificators as $modificator) {
                 if ($modificator['amountReplace'])
-                    $html .= sprintf ("Echeance %s : %s € (remplace l'échéance) / + %s Mois<br/>", $modificator['k'], $modificator['amount'], $modificator['term']);
+                    $html .= sprintf ("Echeance %s : %s € (remplace l'échéance) / + %s Mois<br/>\n", $modificator['k'], $modificator['amount'], $modificator['term']);
                 else
-                    $html .= sprintf ("Echeance %s : remboursement %s € / + %s Mois<br/>", $modificator['k'], $modificator['amount'], $modificator['term']);
+                    $html .= sprintf ("Echeance %s : remboursement %s € / + %s Mois<br/>\n", $modificator['k'], $modificator['amount'], $modificator['term']);
             }
-            $html .= "<br/>";
+            $html .= "<br/>\n";
         }
 
         $html .= "<b>Récapitulatif</b><br/>";
         foreach($totals as $key => $value) {
-            $html .= sprintf("%s : %s €<br/>", $this->headers[$key], number_format($totals[$key], 2, ',', ' '));
+            $html .= sprintf("%s : %s €<br/>\n", $this->headers[$key], number_format($totals[$key], 2, ',', ' '));
         }
-        $html .= "Coût du crédit : ".number_format($totals['interest'] + $totals['amountInsurance'], 2, ',', ' ')." €";
+        $html .= "Coût du crédit : ".number_format($totals['interest'] + $totals['amountInsurance'], 2, ',', ' ')." €\n";
         if ($amortizationSchedule) {
-            $html .= "<br/>";
-            $html .= "<br/>";
-            $html .= "<table>";
-            $html .= "<tr>";
-            $html .= "<th>#</th>";
+            $html .= "<br/>\n";
+            $html .= "<br/>\n";
+            $html .= "<table>\n";
+            $html .= "<tr>\n";
+            $html .= "  <th>#</th>\n";
             foreach($this->headers as $key => $name)
-                $html .= "<th>".$name."</th>";
-            $html .= "</tr>";
+                $html .= "  <th>".$name."</th>\n";
+            $html .= "</tr>\n";
             foreach($this->cache as $k => $values) {
                 $html .= "<tr>";
                 $html .= "<td>$k</td>";

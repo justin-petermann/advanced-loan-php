@@ -7,7 +7,7 @@ $loan = new LoanPhp\loan();
 
 $loan->setInsuranceRate(0.98);
 #$loan->setInsuranceBase('initialCapaital');
-$loan->setCreditRate(3.1);
+$loan->setCreditRate(3.10);
 $loan->setLoanTerm(214);
 $loan->setAmountBorrowed(203000);
 
