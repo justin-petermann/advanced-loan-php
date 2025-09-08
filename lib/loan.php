@@ -4,7 +4,7 @@ namespace AdvancedLoanPhp;
 
 class advancedLoan {
     private $insuranceRate; # taux de l'assurance annuel
-    private $insuranceBase = 'remainingCapital'; # remainingCapital | initialCapaital
+    private $insuranceBase = 'remainingCapital'; # remainingCapital | initialCapital
     private $creditRate; # taux du crédit annuel
     private $monthlyPayment; # mensualité
     private $amountBorrowed; # montant emprunté
@@ -34,10 +34,10 @@ class advancedLoan {
     }
 
     public function setInsuranceBase($insuranceBase) {
-        if (in_array($insuranceBase, ['remainingCapital', 'initialCapaital']))
+        if (in_array($insuranceBase, ['remainingCapital', 'initialCapital']))
             $this->insuranceBase = $insuranceBase;
         else
-            throw new \Exception('insuranceBase have to be remainingCapital or initialCapaital');
+            throw new \Exception('insuranceBase have to be remainingCapital or initialCapital');
     }
 
     public function setCreditRate($creditRate) {
@@ -61,7 +61,7 @@ class advancedLoan {
             case 'remainingCapital':
                 $this->cache[$k]['amountInsurance'] = $this->remainingCapital($k - 1) * ($this->insuranceRate / 100) / 12;
                 break;
-            case 'initialCapaital':
+            case 'initialCapital':
                 $this->cache[$k]['amountInsurance'] = $this->amountBorrowed * ($this->insuranceRate / 100) / 12;
                 break;
         }
