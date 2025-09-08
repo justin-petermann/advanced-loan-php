@@ -1,8 +1,8 @@
 <?php
 
-namespace LoanPhp;
+namespace AdvancedLoanPhp;
 
-class loan {
+class advancedLoan {
     private $insuranceRate; # taux de l'assurance annuel
     private $insuranceBase = 'remainingCapital'; # remainingCapital | initialCapaital
     private $creditRate; # taux du crédit annuel

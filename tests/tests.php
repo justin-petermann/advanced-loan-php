@@ -3,7 +3,7 @@
 
 require_once('../lib/loan.php');
 
-$loan = new LoanPhp\loan();
+$loan = new AdvancedLoanPhp\advancedLoan();
 
 $loan->setInsuranceRate(0.98);
 #$loan->setInsuranceBase('initialCapaital');
